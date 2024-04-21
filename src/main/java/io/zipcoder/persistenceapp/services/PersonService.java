@@ -2,6 +2,7 @@ package io.zipcoder.persistenceapp.services;
 
 import io.zipcoder.persistenceapp.models.Person;
 import io.zipcoder.persistenceapp.repositories.PersonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -10,6 +11,7 @@ import java.util.List;
 @Service
 public class PersonService {
     private PersonRepository repo;
+    @Autowired
     public PersonService(PersonRepository repo) {
         this.repo = repo;
     }
@@ -36,7 +38,7 @@ public class PersonService {
         personToUpdate.setFirstName(person.getFirstName());
         personToUpdate.setLastName(person.getLastName());
         personToUpdate.setMobile(person.getMobile());
-        personToUpdate.setBirthdate(person.getBirthdate());
+        personToUpdate.setBirthDay(person.getBirthDay());
         personToUpdate.setHomeId(person.getHomeId());
 
         return repo.save(personToUpdate);

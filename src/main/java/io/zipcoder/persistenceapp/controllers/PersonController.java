@@ -4,6 +4,7 @@ import io.zipcoder.persistenceapp.models.Person;
 import io.zipcoder.persistenceapp.services.PersonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,13 +19,14 @@ public class PersonController {
 
     @PostMapping("/people")
     public ResponseEntity<Person> createPerson(@RequestBody Person person) {
-        return new ResponseEntity<>(personService.create(person), HttpStatus.CREATED);
+        Person newPerson = new Person(person.getFirstName(), person.getLastName(), person.getMobile(), person.getBirthDay(), person.getHomeId());
+        return new ResponseEntity<>(personService.create(newPerson), HttpStatus.OK);
     }
 
-    @PostMapping("/people")
-    public ResponseEntity<Iterable<Person>> createMultiplePeople(@RequestBody Iterable<Person> people) {
-        return new ResponseEntity<>(personService.createMultiple(people), HttpStatus.CREATED);
-    }
+//    @PostMapping("/people")
+//    public ResponseEntity<Iterable<Person>> createMultiplePeople(@RequestBody Iterable<Person> people) {
+//        return new ResponseEntity<>(personService.createMultiple(people), HttpStatus.CREATED);
+//    }
 
     @GetMapping("/people/{id}")
     public ResponseEntity<Person> findPersonById(@PathVariable Long id) {

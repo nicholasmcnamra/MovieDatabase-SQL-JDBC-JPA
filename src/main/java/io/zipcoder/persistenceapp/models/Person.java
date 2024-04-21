@@ -1,9 +1,6 @@
 package io.zipcoder.persistenceapp.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 @Entity
 public class Person {
@@ -13,23 +10,24 @@ public class Person {
     private String firstName;
     private String lastName;
     private String mobile;
-    private Date birthdate;
+    @Column(name = "birthday")
+    private Date birthDay;
     private long homeId;
 
-    public Person(long id, String firstName, String lastName, String mobile, Date birthdate, long homeId) {
+    public Person(long id, String firstName, String lastName, String mobile, Date birthDay, long homeId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.mobile = mobile;
-        this.birthdate = birthdate;
+        this.birthDay = birthDay;
         this.homeId = homeId;
     }
 
-    public Person(String firstName, String lastName, String mobile, Date birthdate, long homeId) {
+    public Person(String firstName, String lastName, String mobile, Date birthDay, long homeId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.mobile = mobile;
-        this.birthdate = birthdate;
+        this.birthDay = birthDay;
         this.homeId = homeId;
     }
 
@@ -68,12 +66,12 @@ public class Person {
         this.mobile = mobile;
     }
 
-    public Date getBirthdate() {
-        return birthdate;
+    public Date getBirthDay() {
+        return birthDay;
     }
 
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthDay(Date birthdate) {
+        this.birthDay = birthdate;
     }
 
     public long getHomeId() {
