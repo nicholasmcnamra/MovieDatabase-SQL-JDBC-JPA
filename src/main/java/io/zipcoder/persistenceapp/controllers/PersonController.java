@@ -19,8 +19,8 @@ public class PersonController {
 
     @PostMapping("/people")
     public ResponseEntity<Person> createPerson(@RequestBody Person person) {
-        Person newPerson = new Person(person.getFirstName(), person.getLastName(), person.getMobile(), person.getBirthDay(), person.getHomeId());
-        return new ResponseEntity<>(personService.create(newPerson), HttpStatus.OK);
+//        Person newPerson = new Person(person.getFirstName(), person.getLastName(), person.getMobile(), person.getBirthDay(), person.getHomeId());
+        return new ResponseEntity<>(personService.create(person), HttpStatus.OK);
     }
 
 //    @PostMapping("/people")
